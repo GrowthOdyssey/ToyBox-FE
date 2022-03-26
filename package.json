@@ -1,0 +1,48 @@
+{
+  "name": "toybox",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "16.14.0",
+    "npm": "8.5.3"
+  },
+  "scripts": {
+    "stylelint": "stylelint 'src/style/**/*.scss' --fix",
+    "prettier": "prettier --write src",
+    "eslint": "eslint --fix --ext .ts,.tsx src",
+    "format": "npm run stylelint && npm run eslint && npm run prettier",
+    "dev": "next dev --port 8080",
+    "build": "npm run format && next build",
+    "prod": "next build",
+    "start": "next start --port 8080"
+  },
+  "dependencies": {
+    "next": "12.1.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.21",
+    "@types/react": "17.0.39",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "cssnano": "^5.1.5",
+    "eslint": "8.10.0",
+    "eslint-config-next": "12.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "postcss-combine-media-query": "^1.0.1",
+    "postcss-scss": "^4.0.3",
+    "prettier": "^2.5.1",
+    "sass": "^1.49.9",
+    "stylelint": "^14.5.3",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-recommended-scss": "^5.0.2",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-prettier": "^2.0.0",
+    "swr": "^1.2.2",
+    "typescript": "^4.5.5"
+  }
+}

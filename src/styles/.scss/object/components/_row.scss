@@ -1,0 +1,30 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+.c-row {
+  $s: &;
+  $gap: 20;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap + px;
+
+  @include media(md) {
+    @for $i from 1 to 7 {
+      &--pc#{$i} {
+        #{$s}__item {
+          width: calc(100% / #{$i} - #{$gap * ($i - 1) / $i + px});
+        }
+      }
+    }
+  }
+
+  @include media(sm) {
+    @for $i from 1 to 3 {
+      &--sp#{$i} {
+        #{$s}__item {
+          width: calc(100% / #{$i} - #{$gap * ($i - 1) / $i + px});
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+%visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.c-radiogroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.c-radio {
+  > label {
+    position: relative;
+    @include rem('pl', 35, 35);
+    @include font(16, 16);
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      content: '';
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      left: 0;
+      width: 26px;
+      height: 26px;
+      border: 1px solid palette('border');
+      transition: border-color 0.1s;
+    }
+
+    &::after {
+      left: 6px;
+      width: 14px;
+      height: 14px;
+      transition: background-color 0.1s;
+    }
+  }
+
+  > [type='radio'] {
+    @extend %visuallyHidden;
+
+    &:focus {
+      + label::before {
+        outline: 1px solid palette('blue');
+      }
+    }
+
+    &:checked {
+      + label {
+        &::before {
+          border: 1px solid palette('blue');
+        }
+
+        &::after {
+          background: palette('blue');
+        }
+      }
+    }
+  }
+}

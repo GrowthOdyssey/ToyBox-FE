@@ -1,0 +1,11 @@
+@function calc-size($val, $base, $unit) {
+  $size: null;
+
+  @if $unit == 'px' {
+    $size: #{$val + px};
+  } @else {
+    $size: #{calc($val / $base) + $unit};
+  }
+
+  @return $size;
+}

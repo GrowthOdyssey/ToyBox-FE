@@ -1,0 +1,54 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+.c-accordion {
+  $s: &;
+
+  &[data-accordion-flag='true'] {
+    #{$s}__trigger {
+      &::after {
+        transform: translateY(-50%) rotateX(180deg);
+      }
+    }
+
+    #{$s}__detail {
+      display: block;
+    }
+  }
+
+  &[data-accordion-flag='false'] {
+    #{$s}__detail {
+      display: none;
+    }
+  }
+
+  &__trigger {
+    position: relative;
+    @include rem('pt', 14, 12);
+    @include rem('pl', 20, 15);
+    @include rem('pb', 14, 12);
+    line-height: 1;
+    cursor: pointer;
+    background-color: #fff;
+    border-top: 1px solid palette('border', 'd1');
+    border-bottom: 1px solid palette('border', 'd1');
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      width: 9px;
+      height: 6px;
+      content: '';
+      background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2221.199%22%20height%3D%2213.001%22%20viewBox%3D%220%200%2021.199%2013.001%22%3E%0A%20%20%3Cpath%20id%3D%22ar%22%20d%3D%22M-1437.115%2C22h0l-2.41-2.41L-1428.926%2C9l.95.949%2C2.583%2C2.582%2C7.066%2C7.061-2.41%2C2.409-8.189-8.181L-1437.115%2C22Z%22%20transform%3D%22translate(-1418.327%2022.003)%20rotate(-180)%22%20fill%3D%22%2364748b%22%2F%3E%0A%3C%2Fsvg%3E%0A');
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      transition: transform 0.3s ease;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__detail {
+    transition: height 0.3s ease;
+  }
+}

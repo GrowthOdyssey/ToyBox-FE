@@ -1,0 +1,55 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+%visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.c-checkbox {
+  > label {
+    position: relative;
+    @include rem('pl', 35, 35);
+    @include font(16, 16);
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 26px;
+      height: 26px;
+      content: '';
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 12px;
+      border: 1px solid palette('border');
+      border-radius: 4px;
+      transition: all 0.1s;
+      transform: translateY(-50%);
+    }
+  }
+
+  > [type='checkbox'] {
+    @extend %visuallyHidden;
+
+    &:focus {
+      + label::before {
+        outline: 1px solid palette('blue');
+      }
+    }
+
+    &:checked {
+      + label {
+        &::before {
+          background-color: palette('blue');
+          background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%228.696%22%20height%3D%228.766%22%20viewBox%3D%220%200%208.696%208.766%22%3E%0A%20%20%3Cpath%20id%3D%22%E3%83%91%E3%82%B9_43%22%20data-name%3D%22%E3%83%91%E3%82%B9%2043%22%20d%3D%22M329.389%2C282.032a.962.962%2C0%2C0%2C1-.725-.329l-2.2-2.518a.962.962%2C0%2C0%2C1%2C1.45-1.266l1.371%2C1.571%2C3.875-5.8a.962.962%2C0%2C0%2C1%2C1.6%2C1.07l-4.574%2C6.841a.962.962%2C0%2C0%2C1-.738.425Z%22%20transform%3D%22translate(-326.23%20-273.266)%22%20fill%3D%22%23fff%22%2F%3E%0A%3C%2Fsvg%3E%0A');
+          border: 1px solid palette('blue');
+        }
+      }
+    }
+  }
+}

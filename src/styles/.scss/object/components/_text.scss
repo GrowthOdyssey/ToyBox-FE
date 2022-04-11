@@ -1,0 +1,51 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+%input {
+  display: block;
+
+  > input,
+  > textarea {
+    display: block;
+    width: 100%;
+    @include rem('pt', 7, 7);
+    @include rem('pl', 12, 12);
+    @include rem('pr', 12, 12);
+    @include rem('pb', 7, 7);
+    @include font(16, 16);
+    background: #f9f9fa;
+    border: 1px solid palette('border', 'l1');
+    border-radius: 4px;
+
+    &:focus {
+      outline-color: palette('blue');
+    }
+  }
+}
+
+.c-input {
+  @extend %input;
+  @include media(md) {
+    max-width: 400px;
+
+    &--large {
+      max-width: 600px;
+    }
+
+    &--full {
+      max-width: 100%;
+    }
+  }
+  @include media(sm) {
+    width: 100%;
+  }
+}
+
+.c-textarea {
+  width: 100%;
+  @extend %input;
+
+  > textarea {
+    resize: vertical;
+  }
+}

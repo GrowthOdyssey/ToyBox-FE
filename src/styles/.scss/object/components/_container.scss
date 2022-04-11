@@ -1,0 +1,18 @@
+@use '../../foundation/_variable' as *;
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+.c-container {
+  margin-right: auto;
+  margin-left: auto;
+  @include media(md) {
+    max-width: map-get($containerSize, 'pc') + px;
+    padding-right: map-get(map-get($baseSize, 'pc'), 'basePadding') + px;
+    padding-left: map-get(map-get($baseSize, 'pc'), 'basePadding') + px;
+  }
+
+  @include media(sm) {
+    padding-right: map-get(map-get($baseSize, 'sp'), 'basePadding') + px;
+    padding-left: map-get(map-get($baseSize, 'sp'), 'basePadding') + px;
+  }
+}

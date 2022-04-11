@@ -1,0 +1,40 @@
+@use '_media' as *;
+@use '../functions/_size' as *;
+@use '../../foundation/_variable' as v;
+
+$properties: (
+  'w': 'width',
+  'h': 'height',
+  'mt': 'margin-top',
+  'ml': 'margin-left',
+  'mr': 'margin-right',
+  'mb': 'margin-bottom',
+  'pt': 'padding-top',
+  'pl': 'padding-left',
+  'pr': 'padding-right',
+  'pb': 'padding-bottom',
+  't': 'top',
+  'l': 'left',
+  'r': 'right',
+  'b': 'bottom',
+);
+
+@function get-property($property) {
+  @return map-get($properties, $property);
+}
+
+@mixin rem($set, $pcVal: null, $spVal: null, $unit: rem) {
+  $property: get-property($set);
+
+  @if ($pcVal) {
+    @include media(md) {
+      #{$property}: calc-size($pcVal, map-get(v.$defaultsFontSize, 'pc'), $unit);
+    }
+  }
+
+  @if ($spVal) {
+    @include media(sm) {
+      #{$property}: calc-size($spVal, map-get(v.$defaultsFontSize, 'sp'), $unit);
+    }
+  }
+}

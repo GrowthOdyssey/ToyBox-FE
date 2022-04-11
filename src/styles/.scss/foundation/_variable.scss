@@ -1,0 +1,35 @@
+$baseSize: (
+  'pc': (
+    'baseContainer': 1000,
+    'basePadding': 20,
+    'blockMarginTop': null,
+    'blockMarginBottom': null,
+    'blockPaddingTop': null,
+    'blockPaddingBottom': null,
+  ),
+  'sp': (
+    'baseContainer': 335,
+    'basePadding': 20,
+    'blockMarginTop': null,
+    'blockMarginBottom': null,
+    'blockPaddingTop': null,
+    'blockPaddingBottom': null,
+  ),
+);
+
+$containerSize: (
+  'pc': map-get(map-get($baseSize, 'pc'), 'baseContainer') + map-get(map-get($baseSize, 'pc'), 'basePadding') * 2,
+  'sp': map-get(map-get($baseSize, 'sp'), 'baseContainer'),
+);
+
+$defaultsFontSize: (
+  'pc': 16,
+  'sp': 14,
+);
+
+$breakPoints: (
+  'max': 1366,
+  'xl': 1280,
+  'lg': 1024,
+  'md': 768,
+);

@@ -1,0 +1,33 @@
+@use '../../lib/mixins/_index' as *;
+
+.u-mt0 {
+  margin-top: 0;
+}
+
+.u-mt10 {
+  @include rem('mt', 10, 10);
+}
+
+.u-mt20 {
+  @include rem('mt', 20, 20);
+}
+
+.u-mt30 {
+  @include rem('mt', 30, 30);
+}
+
+.u-mb0 {
+  margin-bottom: 0;
+}
+
+.u-mb10 {
+  @include rem('mb', 10, 10);
+}
+
+.u-mb20 {
+  @include rem('mb', 20, 20);
+}
+
+.u-mb30 {
+  @include rem('mb', 30, 30);
+}

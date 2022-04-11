@@ -1,0 +1,17 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+.c-column {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    @include rem('pt', 20, 20);
+    @include rem('pb', 20, 20);
+    border-top: 1px solid palette('border', 'd1');
+
+    &:last-of-type {
+      border-bottom: 1px solid palette('border', 'd1');
+    }
+  }
+}

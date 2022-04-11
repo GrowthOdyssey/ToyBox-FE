@@ -1,0 +1,40 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+.c-loading {
+  text-align: center;
+
+  &__icon {
+    display: inline-block;
+    animation: rotate 0.6s infinite linear;
+
+    circle {
+      fill: transparent;
+      stroke-width: 4;
+      animation: circle 2.2s ease-out infinite forwards;
+    }
+
+    @keyframes circle {
+      0% {
+        stroke: palette('blue', 'l1');
+        stroke-dasharray: 0 114;
+      }
+
+      40% {
+        stroke: palette('blue');
+        stroke-dasharray: 114 114;
+      }
+
+      100% {
+        stroke: palette('blue', 'd1');
+        stroke-dasharray: 0 114;
+      }
+    }
+
+    @keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

@@ -1,5 +1,3 @@
 {
-  "plugins": [
-    "postcss-combine-media-query", "cssnano"
-  ]
+  "plugins": ["postcss-combine-media-query", "cssnano"]
 }

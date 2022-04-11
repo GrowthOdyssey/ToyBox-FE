@@ -10,6 +10,8 @@
   "rules": {
     "at-rule-no-unknown": null,
     "function-no-unknown": null,
-    "no-duplicate-selectors": null
+    "no-duplicate-selectors": null,
+    "scss/no-global-function-names": null,
+    "declaration-empty-line-before": "never"
   }
 }

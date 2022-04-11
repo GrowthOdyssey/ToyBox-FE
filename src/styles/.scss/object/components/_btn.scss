@@ -1,0 +1,90 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+.c-btn {
+  display: block;
+  @include rem('pt', 12, 12);
+  @include rem('pl', 20, 15);
+  @include rem('pr', 20, 15);
+  @include rem('pb', 12, 12);
+  @include font(16, 16);
+  color: #fff;
+  text-align: center;
+  background: palette('green');
+  border: 1px solid transparent;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(58 63 75 / 10%);
+  transition: opacity 0.2s;
+
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &--white {
+    color: palette('black');
+    background: #fff;
+    border: 1px solid palette('border');
+  }
+
+  &--black {
+    background: palette('black');
+  }
+
+  &--gray {
+    background: palette('gray');
+  }
+
+  &--red {
+    background: palette('red');
+  }
+
+  &--orange {
+    background: palette('orange');
+  }
+
+  &--yellow {
+    background: palette('yellow');
+  }
+
+  &--green {
+    background: palette('green');
+  }
+
+  &--teal {
+    background: palette('teal');
+  }
+
+  &--cyan {
+    background: palette('cyan');
+  }
+
+  &--blue {
+    background: palette('blue');
+  }
+
+  &--purple {
+    background: palette('purple');
+  }
+
+  &--pink {
+    background: palette('pink');
+  }
+
+  &--rose {
+    background: palette('rose');
+  }
+
+  &--clear {
+    background: transparent;
+    border: 1px solid #fff;
+  }
+
+  @include media(md) {
+    min-width: 250px;
+  }
+  @include media(sm) {
+    width: 100%;
+    max-width: 350px;
+  }
+}

@@ -1,0 +1,70 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+.c-form {
+  @include rem('pt', 40, 30);
+  @include rem('pl', 40, null);
+  @include rem('pr', 40, null);
+  @include rem('pb', 60, 60);
+  background: #fff;
+
+  &__ttl {
+    text-align: center;
+  }
+
+  &__item {
+    @include rem('pt', 30, 20);
+    @include rem('pl', 20, 20);
+    @include rem('pr', 20, 20);
+    @include rem('pb', 40, 20);
+    border-bottom: 1px solid palette('border', 'l1');
+
+    &:first-of-type {
+      border-top: 1px solid palette('border', 'l1');
+    }
+  }
+
+  &__hdg {
+    display: flex;
+    align-items: center;
+    @include rem('mb', 10, 10);
+    @include font(16, 16);
+    font-weight: bold;
+  }
+
+  &__required {
+    display: inline-block;
+    @include rem('ml', 15, 15);
+    @include rem('pl', 5, 5);
+    @include rem('pr', 5, 5);
+    @include font(12, 12);
+    color: palette('red');
+    background: #fff;
+    border: 1px solid palette('red');
+    border-radius: 4px;
+  }
+
+  &__label {
+    display: block;
+    @include rem('mb', 5, 5);
+    @include font(14, 14);
+    color: palette('gray', 'd1');
+  }
+
+  &__btn {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
+    @include rem('mt', 60, 40);
+    @include rem('pl', null, 20);
+    @include rem('pr', null, 20);
+    @include media(md) {
+      flex-direction: row;
+    }
+    @include media(sm) {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
+}

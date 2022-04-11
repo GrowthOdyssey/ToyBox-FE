@@ -1,0 +1,33 @@
+@use '../../lib/mixins/_index' as *;
+
+.u-align {
+  &-left {
+    text-align: left;
+  }
+
+  &-center {
+    text-align: center;
+  }
+
+  &-right {
+    text-align: right;
+  }
+}
+
+.u-pc-only {
+  @include media(md) {
+    display: block;
+  }
+  @include media(sm) {
+    display: none;
+  }
+}
+
+.u-sp-only {
+  @include media(md) {
+    display: none;
+  }
+  @include media(sm) {
+    display: block;
+  }
+}

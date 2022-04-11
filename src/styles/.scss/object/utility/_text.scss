@@ -1,0 +1,57 @@
+@use '../../lib/functions/_index' as *;
+
+.u-white {
+  background: #fff;
+}
+
+.u-black {
+  color: palette('black');
+}
+
+.u-gray {
+  color: palette('gray');
+}
+
+.u-red {
+  color: palette('red');
+}
+
+.u-orange {
+  color: palette('orange');
+}
+
+.u-yellow {
+  color: palette('yellow');
+}
+
+.u-green {
+  color: palette('green');
+}
+
+.u-teal {
+  color: palette('teal');
+}
+
+.u-cyan {
+  color: palette('cyan');
+}
+
+.u-sky {
+  color: palette('sky');
+}
+
+.u-blue {
+  color: palette('blue');
+}
+
+.u-purple {
+  color: palette('purple');
+}
+
+.u-pink {
+  color: palette('pink');
+}
+
+.u-rose {
+  color: palette('rose');
+}

@@ -1,0 +1,17 @@
+@use '_media' as *;
+@use '../functions/_size' as *;
+@use '../../foundation/_variable' as v;
+
+@mixin font($pcVal: null, $spVal: null, $unit: rem) {
+  @if ($pcVal) {
+    @include media(md) {
+      font-size: calc-size($pcVal, map-get(v.$defaultsFontSize, 'pc'), $unit);
+    }
+  }
+
+  @if ($spVal) {
+    @include media(sm) {
+      font-size: calc-size($spVal, map-get(v.$defaultsFontSize, 'sp'), $unit);
+    }
+  }
+}

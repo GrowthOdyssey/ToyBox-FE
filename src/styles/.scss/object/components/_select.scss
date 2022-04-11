@@ -1,0 +1,59 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+.c-select {
+  display: flex;
+  align-items: center;
+
+  &--hdg {
+    display: grid;
+    grid-gap: 20px;
+    justify-content: flex-start;
+  }
+
+  > select {
+    display: block;
+    line-height: 1;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%228.961%22%20height%3D%225.972%22%20viewBox%3D%220%200%208.961%205.972%22%3E%0A%20%20%3Cpath%20id%3D%22%E3%83%91%E3%82%B9_53%22%20data-name%3D%22%E3%83%91%E3%82%B9%2053%22%20d%3D%22M4.48%2C2l4.48%2C5.972H0Z%22%20transform%3D%22translate(8.961%207.972)%20rotate(180)%22%20fill%3D%22%23394046%22%2F%3E%0A%3C%2Fsvg%3E%0A');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 9px 6px;
+    border: 1px solid palette('border');
+    border-radius: 4px;
+    @include rem('pt', 12, 12);
+    @include rem('pl', 12, 12);
+    @include rem('pr', 32, 32);
+    @include rem('pb', 12, 12);
+    @include font(16, 16);
+
+    &:focus {
+      outline-color: palette('blue');
+    }
+  }
+
+  &__hdg {
+    @include font(14, 14);
+    font-weight: bold;
+    color: palette('gray', 'd1');
+  }
+
+  @include media(md) {
+    &--hdg {
+      grid-template-columns: auto auto;
+    }
+
+    > select {
+      min-width: 150px;
+    }
+  }
+  @include media(sm) {
+    &--hdg {
+      grid-template-columns: auto 1fr;
+    }
+
+    > select {
+      width: 100%;
+    }
+  }
+}

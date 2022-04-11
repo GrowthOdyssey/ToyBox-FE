@@ -1,0 +1,31 @@
+@use '../../foundation/_variable' as v;
+
+@mixin media($bp) {
+  $max: "(min-width: #{map-get(v.$breakPoints, 'max')}px)";
+  $xl: "(min-width: #{map-get(v.$breakPoints, 'xl')}px)";
+  $lg: "(min-width: #{map-get(v.$breakPoints, 'lg')}px)";
+  $md: "(min-width: #{map-get(v.$breakPoints, 'md')}px)";
+  $sm: "(max-width: #{map-get(v.$breakPoints, 'md') - 1}px)";
+
+  @if $bp == max {
+    @media #{$max} {
+      @content;
+    }
+  } @else if $bp == xl {
+    @media #{$xl} {
+      @content;
+    }
+  } @else if $bp == lg {
+    @media #{$lg} {
+      @content;
+    }
+  } @else if $bp == md {
+    @media #{$md} {
+      @content;
+    }
+  } @else if $bp == sm {
+    @media #{$sm} {
+      @content;
+    }
+  }
+}

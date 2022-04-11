@@ -1,0 +1,28 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+.c-hdg {
+  margin-bottom: 0.75em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+
+  &--1 {
+    @include font(36, 28);
+  }
+
+  &--2 {
+    @include font(28, 24);
+  }
+
+  &--3 {
+    @include font(24, 20);
+  }
+
+  &--4 {
+    @include font(20, 18);
+  }
+
+  &--5 {
+    @include font(18, 16);
+  }
+}

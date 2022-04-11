@@ -1,0 +1,22 @@
+@use '_variable' as v;
+@use '../lib/mixins/_index' as *;
+@use '../lib/functions/_index' as *;
+
+$pcFontSize: map-get(v.$defaultsFontSize, 'pc');
+$spFontSize: map-get(v.$defaultsFontSize, 'sp');
+
+html {
+  @include font($pcFontSize, $spFontSize, 'px');
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  color: palette('black');
+  background-color: #f6f6f6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

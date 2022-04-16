@@ -2,7 +2,7 @@ export interface BreadcrumbType {
   items: BreadcrumbItemType[];
 }
 
-interface BreadcrumbItemType {
+export interface BreadcrumbItemType {
   text: string;
   link?: string;
 }

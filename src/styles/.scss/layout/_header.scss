@@ -1,0 +1,74 @@
+@use '../lib/functions/_index' as *;
+@use '../lib/mixins/_index' as *;
+
+.l-header {
+  background: #fff;
+  box-shadow: 0 0 10px rgb(57 64 70 / 16%);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    @include rem('pt', 10, 10);
+    @include rem('pl', 20, 20);
+    @include rem('pr', 20, 20);
+    @include rem('pb', 10, 10);
+  }
+
+  &__search {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    @include rem('ml', 30, null);
+    @include rem('mt', null, 10);
+
+    .c-input {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    > button {
+      @include rem('ml', 10, 10);
+      @include rem('pt', 4, 8);
+      @include rem('pl', 5, 8);
+      @include rem('pr', 5, 8);
+      @include rem('pb', 4, 8);
+      border: 1px solid palette('border', 'l1');
+      border-radius: 4px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    > a {
+      display: block;
+      @include rem('pt', 8, 5);
+      @include rem('pl', 8, 5);
+      @include rem('pr', 8, 5);
+      @include rem('pb', 8, 5);
+      border: 1px solid palette('border');
+      border-radius: 50%;
+    }
+  }
+
+  @include media(md) {
+    &__menu {
+      gap: 15px;
+    }
+  }
+
+  @include media(sm) {
+    &__search {
+      order: 1;
+      width: 100%;
+    }
+
+    &__menu {
+      gap: 10px;
+    }
+  }
+}

@@ -62,6 +62,10 @@
   }
 
   @include media(sm) {
+    &__inner {
+      flex-wrap: wrap;
+    }
+
     &__search {
       order: 1;
       width: 100%;

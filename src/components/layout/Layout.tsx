@@ -10,9 +10,11 @@ export const CommonLayout: VFC<LayoutType> = memo((props) => {
   return (
     <>
       <CommonHead title={title} />
-      <Header />
-      <Main breadcrumb={breadcrumb}>{children}</Main>
-      <Footer />
+      <div className={'l-root'}>
+        <Header />
+        <Main breadcrumb={breadcrumb}>{children}</Main>
+        <Footer />
+      </div>
     </>
   );
 });

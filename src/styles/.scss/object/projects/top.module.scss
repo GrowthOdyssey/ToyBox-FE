@@ -1,0 +1,46 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+.p-kv {
+  width: 100%;
+}
+
+.p-topics {
+  @include rem('mt', 40, 40);
+
+  &__more {
+    @include rem('mt', 40, 40);
+    display: block;
+    text-align: center;
+  }
+
+  @include media(md) {
+    &__inner {
+      display: flex;
+      gap: 0 25px;
+    }
+
+    &__date {
+      width: 12%;
+    }
+
+    &__detail {
+      width: calc(100% - 12% - 25px);
+
+      &:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-decoration-color: palette('border', 'd1');
+        text-underline-offset: 2px;
+      }
+    }
+  }
+
+  @include media(sm) {
+    &__inner {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}

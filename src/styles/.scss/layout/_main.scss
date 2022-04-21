@@ -1,0 +1,6 @@
+@use '../lib/functions/_index' as *;
+@use '../lib/mixins/_index' as *;
+
+.l-main {
+  @include rem('pb', 50, 40);
+}

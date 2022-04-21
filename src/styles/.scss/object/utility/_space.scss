@@ -16,6 +16,14 @@
   @include rem('mt', 30, 30);
 }
 
+.u-mt40 {
+  @include rem('mt', 40, 40);
+}
+
+.u-mt50 {
+  @include rem('mt', 50, 50);
+}
+
 .u-mb0 {
   margin-bottom: 0;
 }
@@ -30,4 +38,12 @@
 
 .u-mb30 {
   @include rem('mb', 30, 30);
+}
+
+.u-mb40 {
+  @include rem('mb', 40, 40);
+}
+
+.u-mb50 {
+  @include rem('mb', 50, 50);
 }

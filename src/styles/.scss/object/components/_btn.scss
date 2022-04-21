@@ -2,7 +2,7 @@
 @use '../../lib/mixins/_index' as *;
 
 .c-btn {
-  display: block;
+  display: inline-block;
   @include rem('pt', 12, 12);
   @include rem('pl', 20, 15);
   @include rem('pr', 20, 15);

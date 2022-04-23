@@ -5,7 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   @include rem('mt', 20, 20);
-  @include rem('mb', 20, 20);
+  @include rem('mb', 30, 30);
 
   &__item {
     line-height: 1;

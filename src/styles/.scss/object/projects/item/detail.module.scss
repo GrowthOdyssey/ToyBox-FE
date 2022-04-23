@@ -1,0 +1,93 @@
+@use '../../../lib/functions/_index' as *;
+@use '../../../lib/mixins/_index' as *;
+
+.p-item-detail {
+  &__info {
+    @include rem('mt', null, 20);
+  }
+
+  &__price {
+    @include rem('mt', 30, 30);
+    @include font(30, 30);
+    font-weight: bold;
+
+    > span {
+      @include rem('ml', 10, 10);
+      @include font(12, 12);
+      vertical-align: baseline;
+    }
+  }
+
+  &__point {
+    color: palette('gray');
+    @include font(14, 14);
+
+    > span {
+      @include font(20, 20);
+      color: palette('red');
+      vertical-align: baseline;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  &__wish {
+    @include rem('pt', 12, 12);
+    @include rem('pl', 12, 12);
+    @include rem('pr', 12, 12);
+    @include rem('pb', 12, 12);
+    border: 1px solid palette('gray');
+    border-radius: 8px;
+  }
+
+  &__category {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 30px;
+    @include font(14, 14);
+    color: palette('gray');
+
+    > span {
+      position: relative;
+      display: inline-block;
+
+      &:not(:last-of-type) {
+        &::after {
+          position: absolute;
+          top: 50%;
+          right: -18px;
+          width: 6px;
+          height: 9px;
+          content: '';
+          background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%226.121%22%20height%3D%229.414%22%20viewBox%3D%220%200%206.121%209.414%22%3E%0A%20%20%3Cpath%20id%3D%22arrow%22%20d%3D%22M1761.165%2C888.891l4%2C4-4%2C4%22%20transform%3D%22translate(-1760.458%20-888.184)%22%20fill%3D%22none%22%20stroke%3D%22%23101010%22%20stroke-width%3D%222%22%2F%3E%0A%3C%2Fsvg%3E%0A');
+          background-repeat: no-repeat;
+          background-size: 100% auto;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+
+  @include media(md) {
+    display: flex;
+    justify-content: space-between;
+
+    &__img {
+      width: 50%;
+    }
+
+    &__info {
+      width: 45%;
+    }
+  }
+
+  @include media(sm) {
+    &__img {
+      text-align: center;
+    }
+  }
+}

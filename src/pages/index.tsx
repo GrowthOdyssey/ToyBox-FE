@@ -9,19 +9,20 @@ import { CommonLayout } from 'components/layout/Layout';
 import { pagesPath } from 'paths/$path';
 import kvImg from '../../public/1000x500.png';
 import itemImg from '../../public/500x500.png';
-import styles from '../styles/.scss/object/projects/top.module.scss';
+import item from '../styles/.scss/object/projects/item/item.module.scss';
+import top from '../styles/.scss/object/projects/top.module.scss';
 const pageTitle = 'TOP';
 
 const Top: NextPage = () => {
   return (
     <CommonLayout title={pageTitle}>
-      <section className={styles['p-kv']}>
+      <section className={top['p-kv']}>
         <Image src={kvImg} width={1000} height={500} alt={'dummy'} />
       </section>
 
       <section className={'u-mt40'}>
         <h2 className={clsx('c-hdg', 'c-hdg--2')}>売れ筋商品</h2>
-        <RowList>
+        <RowList className={item['p-item']}>
           {[...Array(8)].map((_, i) => (
             <Link href={pagesPath.item._itemId('1').$url()} key={i}>
               <a>
@@ -34,7 +35,7 @@ const Top: NextPage = () => {
 
       <section className={'u-mt40'}>
         <h2 className={clsx('c-hdg', 'c-hdg--2')}>新着商品</h2>
-        <RowList>
+        <RowList className={item['p-item']}>
           {[...Array(8)].map((_, i) => (
             <Link href={pagesPath.item._itemId('1').$url()} key={i}>
               <a>
@@ -46,7 +47,7 @@ const Top: NextPage = () => {
       </section>
       <div className={'u-mt40'}>
         <h2 className={clsx('c-hdg', 'c-hdg--2')}>欲しいものリスト</h2>
-        <RowList>
+        <RowList className={item['p-item']}>
           {[...Array(8)].map((_, i) => (
             <Link href={pagesPath.item._itemId('1').$url()} key={i}>
               <a>
@@ -57,14 +58,14 @@ const Top: NextPage = () => {
         </RowList>
       </div>
 
-      <section className={styles['p-topics']}>
+      <section className={top['p-topics']}>
         <h2 className={clsx('c-hdg', 'c-hdg--2')}>新着情報</h2>
         <ColumnList>
           {[...Array(3)].map((_, i) => (
-            <div className={styles['p-topics__inner']} key={i}>
-              <span className={styles['p-topics__date']}>2020年4月1日</span>
+            <div className={top['p-topics__inner']} key={i}>
+              <span className={top['p-topics__date']}>2020年4月1日</span>
               <Link href={'#'}>
-                <a className={styles['p-topics__detail']}>
+                <a className={top['p-topics__detail']}>
                   お知らせテキストが入ります。お知らせテキストが入ります。お知らせテキストが入ります。お知らせテキストが入ります。お知らせテキストが入ります。お知らせテキストが入ります。お知らせテキストが入ります。お知らせテキストが入ります。お知らせテキストが入ります。お知らせテキストが入ります。
                 </a>
               </Link>
@@ -72,7 +73,7 @@ const Top: NextPage = () => {
           ))}
         </ColumnList>
         <Link href={'#'}>
-          <a className={styles['p-topics__more']}>
+          <a className={top['p-topics__more']}>
             <Button label={'もっと見る'}></Button>
           </a>
         </Link>

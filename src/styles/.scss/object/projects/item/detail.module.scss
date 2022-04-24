@@ -12,7 +12,7 @@
     font-weight: bold;
 
     > span {
-      @include rem('ml', 10, 10);
+      @include rem('ml', 5, 5);
       @include font(12, 12);
       vertical-align: baseline;
     }

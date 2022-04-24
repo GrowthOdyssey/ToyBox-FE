@@ -1,0 +1,25 @@
+@use '../../../lib/functions/_index' as *;
+@use '../../../lib/mixins/_index' as *;
+
+.p-item {
+  a {
+    display: block;
+  }
+
+  &__hdg {
+    @include rem('mt', 10, 10);
+    font-weight: bold;
+  }
+
+  &__price {
+    @include rem('mt', 15, 15);
+    @include font(30, 24);
+    font-weight: bold;
+
+    > span {
+      @include rem('ml', 5, 5);
+      @include font(12, 12);
+      vertical-align: baseline;
+    }
+  }
+}

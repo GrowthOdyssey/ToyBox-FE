@@ -1,0 +1,15 @@
+@use '../../../lib/functions/_index' as *;
+@use '../../../lib/mixins/_index' as *;
+
+.p-login-form {
+  max-width: 480px;
+  margin-right: auto;
+  margin-left: auto;
+  @include rem('pt', 20, 20);
+  @include rem('pl', 20, 20);
+  @include rem('pr', 20, 20);
+  @include rem('pb', 30, 30);
+  background: #fff;
+  border: 1px solid palette('border');
+  border-radius: 6px;
+}

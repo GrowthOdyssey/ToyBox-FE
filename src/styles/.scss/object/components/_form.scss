@@ -2,10 +2,6 @@
 @use '../../lib/mixins/_index' as *;
 
 .c-form {
-  @include rem('pt', 40, 30);
-  @include rem('pl', 40, null);
-  @include rem('pr', 40, null);
-  @include rem('pb', 60, 60);
   background: #fff;
 
   &__ttl {

@@ -15,7 +15,7 @@
     "format": "npm run stylelint && npm run eslint && npm run prettier",
     "dev": "npm run typed-scss & pathpida -o src/paths -w & next dev --port 8080",
     "prebuild": "npm run format && pathpida -o src/paths",
-    "build": "npm run prebuild && next build && npm run postcss",
+    "build": "next build && npm run postcss",
     "start": "next start --port 8080"
   },
   "dependencies": {

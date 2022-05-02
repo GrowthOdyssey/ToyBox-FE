@@ -1,0 +1,12 @@
+@use '../../../lib/functions/_index' as *;
+@use '../../../lib/mixins/_index' as *;
+
+.p-mypage-card {
+  background: #fff;
+  @include rem('pt', 20, 20);
+  @include rem('pl', 20, 15);
+  @include rem('pr', 20, 15);
+  @include rem('pb', 30, 20);
+  border: 1px solid palette('border');
+  border-radius: 4px;
+}

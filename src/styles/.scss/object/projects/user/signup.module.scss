@@ -1,0 +1,11 @@
+@use '../../../lib/functions/_index' as *;
+@use '../../../lib/mixins/_index' as *;
+
+.p-signup-form {
+  @include rem('pt', 30, 20);
+  @include rem('pl', 30, null);
+  @include rem('pr', 30, null);
+  @include rem('pb', 40, 30);
+  background: #fff;
+  border-radius: 6px;
+}

@@ -1,0 +1,21 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+.c-birthday {
+  display: flex;
+  align-items: center;
+
+  > span {
+    @include rem('ml', 10, 5);
+  }
+
+  .c-select {
+    &:not(:first-of-type) {
+      @include rem('ml', 20, 15);
+    }
+
+    > select {
+      min-width: auto;
+    }
+  }
+}

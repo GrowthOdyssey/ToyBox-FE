@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { Birthday } from 'components/form/Birthday';
 import { Form } from 'components/form/Form';
 import { CommonLayout } from 'components/layout/Layout';
 import { BreadcrumbItemType } from 'types/common/breadcrumb';
@@ -57,9 +58,9 @@ const formItem: FormItemType[] = [
   },
   {
     hdg: '生年月日',
-    type: 'text',
+    type: 'other',
     element: {
-      name: '生年月日',
+      element: <Birthday />,
     },
   },
   {

@@ -4,6 +4,7 @@ import { Form } from 'components/form/Form';
 import { CommonLayout } from 'components/layout/Layout';
 import { BreadcrumbItemType } from 'types/common/breadcrumb';
 import { FormBtnType, FormItemType } from 'types/form';
+import { prefectures } from 'variables/prefectures';
 import styles from '../../styles/.scss/object/projects/user/signup.module.scss';
 
 const pageTitle = '新規会員登録';
@@ -73,9 +74,10 @@ const formItem: FormItemType[] = [
   },
   {
     hdg: '都道府県',
-    type: 'text',
+    type: 'select',
     element: {
       name: '都道府県',
+      values: prefectures,
     },
   },
   {

@@ -1,7 +1,88 @@
 @use '../../../lib/functions/_index' as *;
 @use '../../../lib/mixins/_index' as *;
 
+%price-tax {
+  @include font(30, 24);
+  font-weight: bold;
+
+  > span {
+    @include rem('ml', 5, 5);
+    @include font(12, 12);
+    vertical-align: baseline;
+  }
+}
+
 .p-item {
+  background: #fff;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    @include rem('pl', 20, 10);
+    @include rem('pr', 20, 10);
+  }
+
+  &__img {
+    > a {
+      display: block;
+    }
+    @include media(md) {
+      width: 200px;
+    }
+    @include media(sm) {
+      width: percentage(calc(120 / 315));
+    }
+  }
+
+  &__detail {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+    justify-content: space-between;
+    @include media(md) {
+      width: calc(100% - 200px - 20px);
+    }
+    @include media(sm) {
+      width: percentage(calc(180 / 315));
+    }
+  }
+
+  &__info {
+    position: relative;
+    @include rem('pb', null, 30);
+  }
+
+  &__hdg {
+    h3 {
+      @include font(18, 16);
+      font-weight: bold;
+    }
+  }
+
+  &__price {
+    @include rem('mb', 10, 10);
+    @extend %price-tax;
+  }
+
+  &__delete {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    @include font(14, 12);
+    color: palette('cyan');
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &::before {
+      content: '×';
+    }
+  }
+}
+
+.p-card-item {
   a {
     display: block;
   }
@@ -13,13 +94,6 @@
 
   &__price {
     @include rem('mt', 15, 15);
-    @include font(30, 24);
-    font-weight: bold;
-
-    > span {
-      @include rem('ml', 5, 5);
-      @include font(12, 12);
-      vertical-align: baseline;
-    }
+    @extend %price-tax;
   }
 }

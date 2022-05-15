@@ -13,6 +13,7 @@ import heart from '../../../public/ico_heart.svg';
 
 const itemData = {
   name: '商品名がはいります。商品名がはいります。商品名がはいります。商品名がはいります。商品名がはいります。',
+  img: img,
   description:
     '商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。',
   category: ['カテゴリー1', 'カテゴリー2'],
@@ -30,13 +31,13 @@ const breadcrumb: BreadcrumbItemType[] = [
 const ItemDetail: NextPage = () => {
   return (
     <CommonLayout title={pageTitle} breadcrumb={breadcrumb}>
-      <section className={styles['p-item-detail']}>
-        <div className={styles['p-item-detail__img']}>
-          <Image src={img} width={500} height={500} alt={'dummy'} />
+      <section className={styles['p-detail']}>
+        <div className={styles['p-detail__img']}>
+          <Image src={itemData.img} width={500} height={500} alt={'dummy'} />
         </div>
-        <div className={styles['p-item-detail__info']}>
+        <div className={styles['p-detail__info']}>
           <h2 className={clsx('c-hdg', 'c-hdg--4')}>{itemData.name}</h2>
-          <div className={styles['p-item-detail__category']}>
+          <div className={styles['p-detail__category']}>
             {itemData.category.map((category) => (
               <span key={category}>{category}</span>
             ))}
@@ -49,16 +50,16 @@ const ItemDetail: NextPage = () => {
           <div className={'u-mt20'}>
             <SelectBox name={'数量'} values={[...Array(20)].map((_, i) => i + 1)} hdg={'数量'} />
           </div>
-          <p className={styles['p-item-detail__price']}>
+          <p className={styles['p-detail__price']}>
             ¥{itemData.price.toLocaleString()}
             <span>(税込み)</span>
           </p>
-          <p className={styles['p-item-detail__point']}>
+          <p className={styles['p-detail__point']}>
             獲得ポイント：<span>{itemData.point}pt</span>
           </p>
-          <div className={styles['p-item-detail__btn']}>
+          <div className={styles['p-detail__btn']}>
             <Button label={'カートに入れる'} color={'red'} />
-            <button className={styles['p-item-detail__wish']}>
+            <button className={styles['p-detail__wish']}>
               <Icon src={heart} alt={'お気に入り'} />
             </button>
           </div>

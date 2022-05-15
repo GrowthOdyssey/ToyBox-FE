@@ -20,43 +20,52 @@ const Top: NextPage = () => {
         <Image src={kvImg} width={1000} height={500} alt={'dummy'} />
       </section>
 
-      <section className={'u-mt40'}>
+      <section className={clsx(top['p-block'], 'u-mt40')}>
         <h2 className={clsx('c-hdg', 'c-hdg--2')}>売れ筋商品</h2>
-        <RowList className={item['p-item']}>
+        <Link href='/item/list'>
+          <a className={clsx(top['p-more-link'], 'c-link')}>もっと見る</a>
+        </Link>
+        <RowList className={item['p-card-item']}>
           {[...Array(8)].map((_, i) => (
             <Link href={pagesPath.item._itemId('1').$url()} key={i}>
               <a>
-                <Image src={itemImg} width={235} height={235} alt={'dummy'} />
+                <Image src={itemImg} alt={'dummy'} />
               </a>
             </Link>
           ))}
         </RowList>
       </section>
 
-      <section className={'u-mt40'}>
+      <section className={clsx(top['p-block'], 'u-mt40')}>
         <h2 className={clsx('c-hdg', 'c-hdg--2')}>新着商品</h2>
-        <RowList className={item['p-item']}>
+        <Link href='/item/list'>
+          <a className={clsx(top['p-more-link'], 'c-link')}>もっと見る</a>
+        </Link>
+        <RowList className={item['p-card-item']}>
           {[...Array(8)].map((_, i) => (
             <Link href={pagesPath.item._itemId('1').$url()} key={i}>
               <a>
-                <Image src={itemImg} width={235} height={235} alt={'dummy'} />
+                <Image src={itemImg} alt={'dummy'} />
               </a>
             </Link>
           ))}
         </RowList>
       </section>
-      <div className={'u-mt40'}>
+      <section className={clsx(top['p-block'], 'u-mt40')}>
         <h2 className={clsx('c-hdg', 'c-hdg--2')}>欲しいものリスト</h2>
-        <RowList className={item['p-item']}>
+        <Link href='/item/list'>
+          <a className={clsx(top['p-more-link'], 'c-link')}>もっと見る</a>
+        </Link>
+        <RowList className={item['p-card-item']}>
           {[...Array(8)].map((_, i) => (
             <Link href={pagesPath.item._itemId('1').$url()} key={i}>
               <a>
-                <Image src={itemImg} width={235} height={235} alt={'dummy'} />
+                <Image src={itemImg} alt={'dummy'} />
               </a>
             </Link>
           ))}
         </RowList>
-      </div>
+      </section>
 
       <section className={top['p-topics']}>
         <h2 className={clsx('c-hdg', 'c-hdg--2')}>新着情報</h2>

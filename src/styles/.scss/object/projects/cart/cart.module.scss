@@ -1,0 +1,48 @@
+@use '../../../lib/functions/_index' as *;
+@use '../../../lib/mixins/_index' as *;
+
+.p-cart-container {
+  @include media(md) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.p-cart-contents {
+  @include media(md) {
+    width: 65%;
+  }
+}
+
+.p-cart-total {
+  @include rem('mt', null, 50);
+  @include rem('pt', 20, 20);
+  @include rem('pl', 20, 20);
+  @include rem('pr', 20, 20);
+  @include rem('pb', 20, 20);
+  background: #fff;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    > span {
+      font-weight: bold;
+
+      &:nth-of-type(2) {
+        @include font(20, 20);
+      }
+    }
+  }
+
+  &__btn {
+    @include rem('mt', 30, 30);
+    text-align: center;
+  }
+
+  @include media(md) {
+    width: 30%;
+  }
+}

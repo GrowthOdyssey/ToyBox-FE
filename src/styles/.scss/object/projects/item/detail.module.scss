@@ -1,7 +1,7 @@
 @use '../../../lib/functions/_index' as *;
 @use '../../../lib/mixins/_index' as *;
 
-.p-item-detail {
+.p-detail {
   &__info {
     @include rem('mt', null, 20);
   }

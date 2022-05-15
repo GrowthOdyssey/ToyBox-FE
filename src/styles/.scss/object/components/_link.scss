@@ -1,0 +1,8 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+
+.c-link {
+  color: palette('blue');
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

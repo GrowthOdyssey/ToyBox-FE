@@ -5,6 +5,16 @@
   width: 100%;
 }
 
+.p-block {
+  position: relative;
+}
+
+.p-more-link {
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
 .p-topics {
   @include rem('mt', 40, 40);
 

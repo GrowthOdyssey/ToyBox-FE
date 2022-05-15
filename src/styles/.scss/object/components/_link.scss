@@ -3,6 +3,9 @@
 
 .c-link {
   color: palette('blue');
-  text-decoration: underline;
-  text-underline-offset: 4px;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
 }

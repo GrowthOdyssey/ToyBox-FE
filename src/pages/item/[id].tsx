@@ -8,27 +8,19 @@ import { SelectBox } from 'components/form/SelectBox';
 import { CommonLayout } from 'components/layout/Layout';
 import styles from 'styles/.scss/object/projects/item/detail.module.scss';
 import { BreadcrumbItemType } from 'types/common/breadcrumb';
-import img from '../../../public/500x500.png';
+import { ItemDetailProps } from 'types/pages/item';
+import { getItemListDatas } from '../../../api/item';
 import heart from '../../../public/ico_heart.svg';
 
-const itemData = {
-  name: '商品名がはいります。商品名がはいります。商品名がはいります。商品名がはいります。商品名がはいります。',
-  img: img,
-  description:
-    '商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。商品説明文がはいります。',
-  category: ['カテゴリー1', 'カテゴリー2'],
-  price: 1000,
-  point: 100,
-  variation: ['赤', '青', '緑'],
-};
-const pageTitle = itemData.name;
-const breadcrumb: BreadcrumbItemType[] = [
-  {
-    text: pageTitle,
-  },
-];
+const ItemDetail: NextPage<ItemDetailProps> = (props) => {
+  const { itemData } = props;
+  const pageTitle = itemData.name;
+  const breadcrumb: BreadcrumbItemType[] = [
+    {
+      text: pageTitle,
+    },
+  ];
 
-const ItemDetail: NextPage = () => {
   return (
     <CommonLayout title={pageTitle} breadcrumb={breadcrumb}>
       <section className={styles['p-detail']}>
@@ -68,6 +60,31 @@ const ItemDetail: NextPage = () => {
       </section>
     </CommonLayout>
   );
+};
+
+export const getStaticPaths = async () => {
+  const itemListDatas = await getItemListDatas();
+  const paths = itemListDatas.map((data) => ({
+    params: {
+      id: data.id,
+    },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async (props: { params: { id: string } }) => {
+  const { params } = props;
+  const itemListDatas = await getItemListDatas();
+  const itemData = itemListDatas.find((item) => item.id === params.id);
+
+  return {
+    props: { itemData },
+    // revalidate: 60,
+  };
 };
 
 export default ItemDetail;

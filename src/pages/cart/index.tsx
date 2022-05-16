@@ -53,7 +53,7 @@ const CartIndex: NextPage = () => {
               {itemData.map((data, i) => (
                 <div key={i} className={item['p-item__inner']}>
                   <div className={item['p-item__img']}>
-                    <Link href={pagesPath.item._itemId(data.id).$url()}>
+                    <Link href={pagesPath.item._id(data.id).$url()}>
                       <a>
                         <Image src={data.img} alt={'dummy'} />
                       </a>
@@ -61,7 +61,7 @@ const CartIndex: NextPage = () => {
                   </div>
                   <div className={item['p-item__detail']}>
                     <div className={item['p-item__hdg']}>
-                      <Link href={pagesPath.item._itemId(data.id).$url()}>
+                      <Link href={pagesPath.item._id(data.id).$url()}>
                         <a>
                           <h3>{data.name}</h3>
                         </a>

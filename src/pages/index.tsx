@@ -41,12 +41,12 @@ const Top: NextPage<Props> = (props) => {
         <RowList className={item['p-card-item']}>
           {hotSeelingItems.map((data, i) => (
             <React.Fragment key={i}>
-              <Link href={pagesPath.item._itemId(data.id).$url()}>
+              <Link href={pagesPath.item._id(data.id).$url()}>
                 <a>
                   <Image src={data.img} alt={'dummy'} width={500} height={500} />
                 </a>
               </Link>
-              <Link href={pagesPath.item._itemId(data.id).$url()}>
+              <Link href={pagesPath.item._id(data.id).$url()}>
                 <a>
                   <h3 className={item['p-card-item__hdg']}>{data.name}</h3>
                 </a>
@@ -64,12 +64,12 @@ const Top: NextPage<Props> = (props) => {
         <RowList className={item['p-card-item']}>
           {newArrivalItems.map((data, i) => (
             <React.Fragment key={i}>
-              <Link href={pagesPath.item._itemId(data.id).$url()}>
+              <Link href={pagesPath.item._id(data.id).$url()}>
                 <a>
                   <Image src={data.img} alt={'dummy'} width={500} height={500} />
                 </a>
               </Link>
-              <Link href={pagesPath.item._itemId(data.id).$url()}>
+              <Link href={pagesPath.item._id(data.id).$url()}>
                 <a>
                   <h3 className={item['p-card-item__hdg']}>{data.name}</h3>
                 </a>
@@ -87,12 +87,12 @@ const Top: NextPage<Props> = (props) => {
         <RowList className={item['p-card-item']}>
           {wishListItems.map((data, i) => (
             <React.Fragment key={i}>
-              <Link href={pagesPath.item._itemId(data.id).$url()}>
+              <Link href={pagesPath.item._id(data.id).$url()}>
                 <a>
                   <Image src={data.img} alt={'dummy'} width={500} height={500} />
                 </a>
               </Link>
-              <Link href={pagesPath.item._itemId(data.id).$url()}>
+              <Link href={pagesPath.item._id(data.id).$url()}>
                 <a>
                   <h3 className={item['p-card-item__hdg']}>{data.name}</h3>
                 </a>

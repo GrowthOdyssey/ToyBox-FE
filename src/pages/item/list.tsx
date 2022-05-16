@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -8,14 +8,9 @@ import { CommonLayout } from 'components/layout/Layout';
 import { pagesPath } from 'paths/$path';
 import styles from 'styles/.scss/object/projects/item/item.module.scss';
 import { BreadcrumbItemType } from 'types/common/breadcrumb';
-import itemImg from '../../../public/500x500.png';
+import { ItemListProps } from 'types/pages/item';
+import { getItemListDatas } from '../../../api/item';
 
-const itemData = {
-  name: '商品名がはいります。商品名がはいります。商品名がはいります。商品名がはいります。商品名がはいります。',
-  img: itemImg,
-  category: ['カテゴリー1', 'カテゴリー2'],
-  price: 1000,
-};
 const pageTitle = '商品一覧';
 const breadcrumb: BreadcrumbItemType[] = [
   {
@@ -23,32 +18,42 @@ const breadcrumb: BreadcrumbItemType[] = [
   },
 ];
 
-const ItemList: NextPage = () => {
+const ItemList: NextPage<ItemListProps> = (props) => {
+  const { itemListDatas } = props;
+
   return (
     <CommonLayout title={pageTitle} breadcrumb={breadcrumb}>
       <h2 className={clsx('c-hdg', 'c-hdg--2')}>商品一覧</h2>
       <RowList className={styles['p-card-item']}>
-        {[...Array(20)].map((_, i) => (
-          <React.Fragment key={i}>
-            <Link href={pagesPath.item._itemId('1').$url()}>
+        {itemListDatas.map((data) => (
+          <React.Fragment key={data.id}>
+            <Link href={pagesPath.item._id(data.id).$url()}>
               <a>
-                <Image src={itemData.img} alt={'dummy'} />
+                <Image src={data.img} alt={'dummy'} width={500} height={500} />
               </a>
             </Link>
-            <Link href={pagesPath.item._itemId('1').$url()}>
+            <Link href={pagesPath.item._id(data.id).$url()}>
               <a>
-                <h3 className={styles['p-card-item__hdg']}>{itemData.name}</h3>
+                <h3 className={styles['p-card-item__hdg']}>{data.name}</h3>
               </a>
             </Link>
             <p className={styles['p-card-item__price']}>
-              ¥{itemData.price.toLocaleString()}
-              <span>(税込み)</span>
+              ¥{data.price.toLocaleString()}
+              <span>(税込)</span>
             </p>
           </React.Fragment>
         ))}
       </RowList>
     </CommonLayout>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const itemListDatas = await getItemListDatas();
+
+  return {
+    props: { itemListDatas },
+  };
 };
 
 export default ItemList;

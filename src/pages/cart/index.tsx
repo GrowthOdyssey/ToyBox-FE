@@ -1,14 +1,17 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { Button } from 'components/common/Button';
 import { ColumnList } from 'components/common/ColumnList';
 import { SelectBox } from 'components/form/SelectBox';
 import { CommonLayout } from 'components/layout/Layout';
+import { useCartContext } from 'context/Cart';
 import { pagesPath } from 'paths/$path';
 import { BreadcrumbItemType } from 'types/common/breadcrumb';
-import itemImg from '../../../public/500x500.png';
+import { ItemDataType } from 'types/pages/item';
+import { itemDatas } from '../../../mock/item';
 import cart from '../../styles/.scss/object/projects/cart/cart.module.scss';
 import item from '../../styles/.scss/object/projects/item/item.module.scss';
 
@@ -18,44 +21,41 @@ const breadcrumb: BreadcrumbItemType[] = [
     text: pageTitle,
   },
 ];
-const itemData = [
-  {
-    id: 1,
-    name: '商品名がはいります。商品名がはいります。商品名がはいります。商品名がはいります。商品名がはいります。',
-    img: itemImg,
-    price: 1000,
-    quantity: 2,
-  },
-  {
-    id: 2,
-    name: '商品名がはいります。商品名がはいります。商品名がはいります。商品名がはいります。商品名がはいります。',
-    img: itemImg,
-    price: 1000,
-    quantity: 3,
-  },
-  {
-    id: 3,
-    name: '商品名がはいります。商品名がはいります。商品名がはいります。商品名がはいります。商品名がはいります。',
-    img: itemImg,
-    price: 1000,
-    quantity: 4,
-  },
-];
 
 const CartIndex: NextPage = () => {
+  const { cartItem } = useCartContext();
+  const [cartItemData, setCartItemData] = useState<ItemDataType[]>([]);
+
+  useEffect(() => {
+    if (!cartItem.length) return;
+
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+    const cartData = cartItem.map((item) => itemDatas.find((data) => data.id === item.id)!);
+    setCartItemData(cartData);
+  }, []);
+
+  const getCartItemQuantity = () => {
+    return '10';
+  };
+
+  const getCartTotalPrice = () => {
+    const total = 10000;
+    return total.toLocaleString();
+  };
+
   return (
     <CommonLayout title={pageTitle} breadcrumb={breadcrumb}>
       <h2 className={clsx('c-hdg', 'c-hdg--2')}>カート</h2>
-      {itemData.length ? (
+      {cartItemData.length ? (
         <div className={cart['p-cart-container']}>
           <section className={cart['p-cart-contents']}>
             <ColumnList className={item['p-item']}>
-              {itemData.map((data, i) => (
+              {cartItemData.map((data, i) => (
                 <div key={i} className={item['p-item__inner']}>
                   <div className={item['p-item__img']}>
                     <Link href={pagesPath.item._id(data.id).$url()}>
                       <a>
-                        <Image src={data.img} alt={'dummy'} />
+                        <Image src={data.img} width={500} height={500} alt={'dummy'} />
                       </a>
                     </Link>
                   </div>
@@ -72,7 +72,12 @@ const CartIndex: NextPage = () => {
                         ¥{data.price.toLocaleString()}
                         <span>(税込み)</span>
                       </p>
-                      <SelectBox name={'数量'} values={[...Array(20)].map((_, i) => i + 1)} hdg={'数量'} />
+                      <SelectBox
+                        name={'数量'}
+                        values={[...Array(20)].map((_, i) => i + 1)}
+                        value={cartItem[i].quantity}
+                        hdg={'数量'}
+                      />
                       <button className={item['p-item__delete']}>削除</button>
                     </div>
                   </div>
@@ -83,14 +88,14 @@ const CartIndex: NextPage = () => {
           <section className={cart['p-cart-total']}>
             <div className={cart['p-cart-total__item']}>
               <span>商品点数</span>
-              <span>3個</span>
+              <span>{getCartItemQuantity()}個</span>
             </div>
             <div className={cart['p-cart-total__item']}>
               <span>小計(税込み)</span>
-              <span>¥{(3000).toLocaleString()}</span>
+              <span>¥{getCartTotalPrice()}</span>
             </div>
             <div className={cart['p-cart-total__btn']}>
-              <Button label={'精算画面に進む'} color={'orange'} />
+              <Button label={'注文画面に進む'} color={'orange'} />
             </div>
           </section>
         </div>

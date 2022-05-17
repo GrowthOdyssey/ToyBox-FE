@@ -1,11 +1,14 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import { Button } from 'components/common/Button';
 import { Icon } from 'components/common/Icon';
 import { RadioGroup } from 'components/form/RadioGroup';
 import { SelectBox } from 'components/form/SelectBox';
 import { CommonLayout } from 'components/layout/Layout';
+import { useCartContext } from 'context/Cart';
+import { pagesPath } from 'paths/$path';
 import styles from 'styles/.scss/object/projects/item/detail.module.scss';
 import { BreadcrumbItemType } from 'types/common/breadcrumb';
 import { ItemDetailProps } from 'types/pages/item';
@@ -20,6 +23,14 @@ const ItemDetail: NextPage<ItemDetailProps> = (props) => {
       text: pageTitle,
     },
   ];
+  const { cartItem, setCartItem } = useCartContext();
+  const router = useRouter();
+
+  const addCart = (id: string) => {
+    const quantitySelect = document.querySelector('select[name="quantity"]') as HTMLSelectElement;
+    setCartItem([...cartItem, { id, quantity: Number(quantitySelect.value) }]);
+    router.push(pagesPath.cart.$url());
+  };
 
   return (
     <CommonLayout title={pageTitle} breadcrumb={breadcrumb}>
@@ -40,7 +51,7 @@ const ItemDetail: NextPage<ItemDetailProps> = (props) => {
             </div>
           )}
           <div className={'u-mt20'}>
-            <SelectBox name={'数量'} values={[...Array(20)].map((_, i) => i + 1)} hdg={'数量'} />
+            <SelectBox name={'quantity'} values={[...Array(20)].map((_, i) => i + 1)} hdg={'数量'} />
           </div>
           <p className={styles['p-detail__price']}>
             ¥{itemData.price.toLocaleString()}
@@ -50,7 +61,7 @@ const ItemDetail: NextPage<ItemDetailProps> = (props) => {
             獲得ポイント：<span>{itemData.point}pt</span>
           </p>
           <div className={styles['p-detail__btn']}>
-            <Button label={'カートに入れる'} color={'red'} />
+            <Button label={'カートに入れる'} color={'red'} onclick={() => addCart(itemData.id)} />
             <button className={styles['p-detail__wish']}>
               <Icon src={heart} alt={'お気に入り'} />
             </button>

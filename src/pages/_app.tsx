@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
+import { AppContext } from 'context/App';
 import { commonModules } from '../modules/common/index';
 import '../styles/style.scss';
 
@@ -8,7 +9,11 @@ function MyApp({ Component, pageProps, router }: AppProps) {
     commonModules();
   }, [router.pathname]);
 
-  return <Component {...pageProps} />;
+  return (
+    <AppContext>
+      <Component {...pageProps} />
+    </AppContext>
+  );
 }
 
 export default MyApp;

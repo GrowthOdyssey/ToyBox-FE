@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { VFC, memo } from 'react';
 import { Icon } from 'components/common/Icon';
 import { TextInput } from 'components/form/TextInput';
+import { useLoginUser } from 'context/LoginUser';
 import { pagesPath } from 'paths/$path';
 import logo from '../../../public/200x50.png';
 import cart from '../../../public/ico_cart.svg';
@@ -10,9 +11,10 @@ import login from '../../../public/ico_login.svg';
 import search from '../../../public/ico_search.svg';
 import user from '../../../public/ico_user.svg';
 
-const isLogin = true;
-
 export const Header: VFC = memo(() => {
+  const { loginUser } = useLoginUser();
+  const isLogin = loginUser.id ? true : false;
+
   return (
     <header className={'l-header'}>
       <div className={'l-header__inner'}>
@@ -31,15 +33,15 @@ export const Header: VFC = memo(() => {
         </div>
         <div className={'l-header__menu'}>
           {isLogin ? (
-            <Link href={pagesPath.user.login.$url()}>
-              <a>
-                <Icon src={login} alt={'ログイン'} />
-              </a>
-            </Link>
-          ) : (
             <Link href={pagesPath.mypage.$url()}>
               <a>
                 <Icon src={user} alt={'マイページ'} />
+              </a>
+            </Link>
+          ) : (
+            <Link href={pagesPath.user.login.$url()}>
+              <a>
+                <Icon src={login} alt={'ログイン'} />
               </a>
             </Link>
           )}

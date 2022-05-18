@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { ReactNode } from 'react';
-import { CartProvider } from './Cart';
+import { CartItemProvider } from './CartItem';
+import { LoginUserProvider } from './LoginUser';
 
 const bundleComponents = (...components: any[]) => {
   if (components.length === 1) {
@@ -15,7 +16,7 @@ const bundleComponents = (...components: any[]) => {
   }
 };
 
-const ComposeProvider = bundleComponents(CartProvider);
+const ComposeProvider = bundleComponents(CartItemProvider, LoginUserProvider);
 
 export const AppContext = (props: { children: ReactNode }) => {
   const { children } = props;

@@ -7,7 +7,7 @@ import { Icon } from 'components/common/Icon';
 import { RadioGroup } from 'components/form/RadioGroup';
 import { SelectBox } from 'components/form/SelectBox';
 import { CommonLayout } from 'components/layout/Layout';
-import { useCartContext } from 'context/Cart';
+import { useCartItemContext } from 'context/CartItem';
 import { pagesPath } from 'paths/$path';
 import styles from 'styles/.scss/object/projects/item/detail.module.scss';
 import { BreadcrumbItemType } from 'types/common/breadcrumb';
@@ -23,7 +23,7 @@ const ItemDetail: NextPage<ItemDetailProps> = (props) => {
       text: pageTitle,
     },
   ];
-  const { cartItem, setCartItem } = useCartContext();
+  const { cartItem, setCartItem } = useCartItemContext();
   const router = useRouter();
 
   const addCart = (id: string) => {

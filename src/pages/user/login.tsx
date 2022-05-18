@@ -4,46 +4,59 @@ import clsx from 'clsx';
 import { Button } from 'components/common/Button';
 import { Form } from 'components/form/Form';
 import { CommonLayout } from 'components/layout/Layout';
+import { useLogin } from 'hooks/useLogin';
 import { pagesPath } from 'paths/$path';
 import { BreadcrumbItemType } from 'types/common/breadcrumb';
-import { FormBtnType, FormItemType } from 'types/form';
+import { FormItemType } from 'types/form';
 import styles from '../../styles/.scss/object/projects/user/login.module.scss';
 
-const pageTitle = 'ログイン';
-const breadcrumb: BreadcrumbItemType[] = [
-  {
-    text: pageTitle,
-  },
-];
-const formItem: FormItemType[] = [
-  {
-    hdg: 'メールアドレス',
-    type: 'text',
-    element: {
-      name: 'メールアドレス',
-      placeholder: 'メールアドレスを入力してください',
-    },
-  },
-  {
-    hdg: 'パスワード',
-    type: 'text',
-    element: {
-      name: 'パスワード',
-      placeholder: 'パスワードを入力してください',
-    },
-  },
-];
-const formBtn: FormBtnType = {
-  label: 'ログイン',
-  onclick: () => console.log('login'),
-};
-
 const UserLogin: NextPage = () => {
+  const { login } = useLogin();
+  const pageTitle = 'ログイン';
+  const breadcrumb: BreadcrumbItemType[] = [
+    {
+      text: pageTitle,
+    },
+  ];
+
+  const formItem: FormItemType[] = [
+    {
+      hdg: 'メールアドレス',
+      type: 'text',
+      element: {
+        name: 'mail',
+        placeholder: 'メールアドレスを入力してください',
+      },
+    },
+    {
+      hdg: 'パスワード',
+      type: 'text',
+      element: {
+        name: 'password',
+        placeholder: 'パスワードを入力してください',
+      },
+    },
+  ];
+
+  const onclickLoginBtn = () => {
+    const form = document.querySelector('form[name="login"]');
+    if (!form) return;
+
+    let data = {};
+
+    const items = form.querySelectorAll('input');
+    items.forEach((item) => {
+      data = { ...data, ...{ [item.name]: item.value } };
+    });
+
+    login(data);
+  };
+
   return (
     <CommonLayout title={pageTitle} breadcrumb={breadcrumb}>
       <div className={styles['p-login-container']}>
         <div className={styles['p-login-form']}>
-          <Form ttl={'ログイン'} name={'ログイン'} btn={formBtn}>
+          <Form ttl={'ログイン'} name={'login'} btn={{ label: 'ログイン', onclick: onclickLoginBtn }}>
             {formItem}
           </Form>
         </div>

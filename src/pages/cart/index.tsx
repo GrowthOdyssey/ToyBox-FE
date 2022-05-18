@@ -7,7 +7,7 @@ import { Button } from 'components/common/Button';
 import { ColumnList } from 'components/common/ColumnList';
 import { SelectBox } from 'components/form/SelectBox';
 import { CommonLayout } from 'components/layout/Layout';
-import { useCartContext } from 'context/Cart';
+import { useCartItemContext } from 'context/CartItem';
 import { pagesPath } from 'paths/$path';
 import { BreadcrumbItemType } from 'types/common/breadcrumb';
 import { ItemDataType } from 'types/pages/item';
@@ -23,7 +23,7 @@ const breadcrumb: BreadcrumbItemType[] = [
 ];
 
 const CartIndex: NextPage = () => {
-  const { cartItem } = useCartContext();
+  const { cartItem } = useCartItemContext();
   const [cartItemData, setCartItemData] = useState<ItemDataType[]>([]);
 
   useEffect(() => {

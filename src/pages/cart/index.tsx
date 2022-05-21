@@ -23,24 +23,32 @@ const breadcrumb: BreadcrumbItemType[] = [
 ];
 
 const CartIndex: NextPage = () => {
-  const { cartItem } = useCartItemContext();
-  const [cartItemData, setCartItemData] = useState<ItemDataType[]>([]);
+  const { cartItem, setCartItem } = useCartItemContext();
+  const [cartItemData, setCartItemData] = useState<(ItemDataType & { quantity: number })[]>([]);
 
   useEffect(() => {
     if (!cartItem.length) return;
 
-    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-    const cartData = cartItem.map((item) => itemDatas.find((data) => data.id === item.id)!);
+    const cartData = cartItem.map((item) => {
+      /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+      const data = itemDatas.find((data) => data.id === item.id)!;
+      return { ...data, quantity: item.quantity };
+    });
     setCartItemData(cartData);
-  }, []);
+  }, [cartItem]);
 
   const getCartItemQuantity = () => {
-    return '10';
+    return cartItemData.reduce((p, v) => p + v.quantity, 0);
   };
 
   const getCartTotalPrice = () => {
-    const total = 10000;
-    return total.toLocaleString();
+    const totalPrice = cartItemData.reduce((p, v) => p + v.price * v.quantity, 0);
+    return totalPrice.toLocaleString();
+  };
+
+  const removeCartItem = (index: number) => {
+    setCartItem(cartItem.filter((_, i) => i !== index));
+    setCartItemData(cartItemData.filter((_, i) => i !== index));
   };
 
   return (
@@ -75,10 +83,12 @@ const CartIndex: NextPage = () => {
                       <SelectBox
                         name={'数量'}
                         values={[...Array(20)].map((_, i) => i + 1)}
-                        value={cartItem[i].quantity}
+                        value={data.quantity}
                         hdg={'数量'}
                       />
-                      <button className={item['p-item__delete']}>削除</button>
+                      <button className={item['p-item__delete']} onClick={() => removeCartItem(i)}>
+                        削除
+                      </button>
                     </div>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { Button } from 'components/common/Button';
 import { ColumnList } from 'components/common/ColumnList';
@@ -46,6 +46,12 @@ const CartIndex: NextPage = () => {
     return totalPrice.toLocaleString();
   };
 
+  const changeItemQuantity = (i: number, e: ChangeEvent<HTMLSelectElement>) => {
+    const value = e.currentTarget.value;
+    cartItem[i].quantity = Number(value);
+    setCartItem([...cartItem]);
+  };
+
   const removeCartItem = (index: number) => {
     setCartItem(cartItem.filter((_, i) => i !== index));
     setCartItemData(cartItemData.filter((_, i) => i !== index));
@@ -83,7 +89,8 @@ const CartIndex: NextPage = () => {
                       <SelectBox
                         name={'数量'}
                         values={[...Array(20)].map((_, i) => i + 1)}
-                        value={data.quantity}
+                        onChange={(e) => changeItemQuantity(i, e)}
+                        selected={data.quantity}
                         hdg={'数量'}
                       />
                       <button className={item['p-item__delete']} onClick={() => removeCartItem(i)}>

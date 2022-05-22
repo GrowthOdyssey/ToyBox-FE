@@ -28,8 +28,13 @@ const ItemDetail: NextPage<ItemDetailProps> = (props) => {
 
   const addCart = (id: string) => {
     const quantitySelect = document.querySelector('select[name="quantity"]') as HTMLSelectElement;
-    setCartItem([...cartItem, { id, quantity: Number(quantitySelect.value) }]);
-    router.push(pagesPath.cart.$url());
+    const isInclude = cartItem.some((v) => v.id === id);
+    if (isInclude) {
+      alert('この商品は既にカートに入っています。');
+    } else {
+      setCartItem([...cartItem, { id, quantity: Number(quantitySelect.value) }]);
+      router.push(pagesPath.cart.$url());
+    }
   };
 
   return (

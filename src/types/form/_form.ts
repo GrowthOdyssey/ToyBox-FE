@@ -10,6 +10,7 @@ export interface FormPropsType {
   name: string;
   children: FormItemType[];
   btn: FormBtnType;
+  confirm?: boolean;
 }
 
 export interface FormItemType extends FormInputPropsType {
@@ -34,7 +35,8 @@ export type FormInputElementType =
 type FormInputTypeAttrType = 'text' | 'textarea' | 'radio' | 'checkbox' | 'select' | 'other';
 
 export interface FormBtnType {
-  label: string;
-  onclick: () => void;
-  goBack?: boolean;
+  submitLabel: string;
+  onclickSubmit: () => void;
+  confirmLabel?: string;
+  onclickConfirm?: () => void;
 }

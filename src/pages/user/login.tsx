@@ -56,7 +56,7 @@ const UserLogin: NextPage = () => {
     <CommonLayout title={pageTitle} breadcrumb={breadcrumb}>
       <div className={styles['p-login-container']}>
         <div className={styles['p-login-form']}>
-          <Form ttl={'ログイン'} name={'login'} btn={{ label: 'ログイン', onclick: onclickLoginBtn }}>
+          <Form ttl={'ログイン'} name={'login'} btn={{ submitLabel: 'ログイン', onclickSubmit: onclickLoginBtn }}>
             {formItem}
           </Form>
         </div>

@@ -61,6 +61,7 @@ const formItem: FormItemType[] = [
     hdg: '生年月日',
     type: 'other',
     element: {
+      name: 'birthday',
       element: <Birthday />,
     },
   },
@@ -124,15 +125,17 @@ const formItem: FormItemType[] = [
 ];
 
 const formBtn: FormBtnType = {
-  label: '登録',
-  onclick: () => console.log('signup'),
+  submitLabel: '確認する',
+  onclickSubmit: () => console.log('signup'),
+  confirmLabel: '登録する',
+  onclickConfirm: () => console.log('confirm'),
 };
 
 const UserSignup: NextPage = () => {
   return (
     <CommonLayout title={pageTitle} breadcrumb={breadcrumb}>
       <div className={styles['p-signup-form']}>
-        <Form ttl={'会員登録'} name={'会員登録'} btn={formBtn}>
+        <Form ttl={'会員登録'} name={'会員登録'} confirm={true} btn={formBtn}>
           {formItem}
         </Form>
       </div>

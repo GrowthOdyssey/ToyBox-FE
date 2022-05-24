@@ -1,0 +1,16 @@
+@use '../../lib/functions/_index' as *;
+@use '../../lib/mixins/_index' as *;
+@use '../components/_hdg' as *;
+
+.p-complete {
+  text-align: center;
+
+  &__hdg {
+    @extend %hdg;
+    @include font(28, 24);
+  }
+
+  &__btn {
+    @include rem('mt', 50, 50);
+  }
+}

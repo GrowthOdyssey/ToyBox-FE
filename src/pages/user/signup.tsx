@@ -1,7 +1,9 @@
 import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import { Birthday } from 'components/form/Birthday';
 import { Form } from 'components/form/Form';
 import { CommonLayout } from 'components/layout/Layout';
+import { pagesPath } from 'paths/$path';
 import { BreadcrumbItemType } from 'types/common/breadcrumb';
 import { FormBtnType, FormItemType } from 'types/form';
 import { prefectures } from 'variables/prefectures';
@@ -124,14 +126,16 @@ const formItem: FormItemType[] = [
   },
 ];
 
-const formBtn: FormBtnType = {
-  submitLabel: '確認する',
-  onclickSubmit: () => console.log('signup'),
-  confirmLabel: '登録する',
-  onclickConfirm: () => console.log('confirm'),
-};
-
 const UserSignup: NextPage = () => {
+  const router = useRouter();
+
+  const formBtn: FormBtnType = {
+    submitLabel: '確認する',
+    onclickSubmit: () => console.log('signup'),
+    confirmLabel: '登録する',
+    onclickConfirm: () => router.push(pagesPath.user.complete.$url()),
+  };
+
   return (
     <CommonLayout title={pageTitle} breadcrumb={breadcrumb}>
       <div className={styles['p-signup-form']}>

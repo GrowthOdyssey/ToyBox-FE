@@ -1,9 +1,13 @@
 @use '../../lib/functions/_index' as *;
 @use '../../lib/mixins/_index' as *;
 
-.c-hdg {
+%hdg {
   margin-bottom: 0.75em;
   font-weight: bold;
+}
+
+.c-hdg {
+  @extend %hdg;
 
   &--1 {
     @include font(36, 28);

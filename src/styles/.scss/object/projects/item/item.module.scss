@@ -13,7 +13,16 @@
 }
 
 .p-item {
+  $p: &;
   background: #fff;
+
+  &--history {
+    border-right: 1px solid palette('border');
+    border-left: 1px solid palette('border');
+    #{$p}__detail {
+      width: calc(100% - 200px - 250px - 40px);
+    }
+  }
 
   &__inner {
     display: flex;
@@ -45,6 +54,13 @@
     @include media(sm) {
       width: percentage(calc(180 / 315));
     }
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+    width: 250px;
   }
 
   &__info {

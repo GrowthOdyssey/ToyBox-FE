@@ -9,6 +9,10 @@
 
 .p-history-item {
   display: block;
+
+  li:last-of-type {
+    border-radius: 0 0 10px 10px;
+  }
 }
 
 .p-history-info {
@@ -20,15 +24,18 @@
   border-radius: 10px 10px 0 0;
 
   &__inner {
-    display: flex;
-    justify-content: space-between;
     @include rem('pt', 10, 10);
     @include rem('pl', 10, 10);
     @include rem('pr', 10, 10);
     @include rem('pb', 10, 10);
 
-    > div {
-      width: calc(100% / 2);
+    @include media(md) {
+      display: flex;
+      justify-content: space-between;
+
+      > div {
+        width: calc(100% / 2);
+      }
     }
   }
 }

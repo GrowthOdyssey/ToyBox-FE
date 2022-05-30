@@ -19,13 +19,16 @@
   &--history {
     border-right: 1px solid palette('border');
     border-left: 1px solid palette('border');
-    #{$p}__detail {
-      width: calc(100% - 200px - 250px - 40px);
+    @include media(md) {
+      #{$p}__detail {
+        width: calc(100% - 200px - 250px - 40px);
+      }
     }
   }
 
   &__inner {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     @include rem('pl', 20, 10);
     @include rem('pr', 20, 10);
@@ -60,7 +63,12 @@
     display: flex;
     flex-direction: column;
     gap: 10px 0;
-    width: 250px;
+    @include media(md) {
+      width: 250px;
+    }
+    @include media(sm) {
+      width: 100%;
+    }
   }
 
   &__info {
